@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- import axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- bootstrap imports -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  <!-- my files imports -->
+  <script src="index.js"></script>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div id="pokemonCount"></div>
+
+    <div id="pokeTypesFilter" class="px-3">
+      <input id="normal" class="typeFilter" type="checkbox" name="type" value="normal">
+      <label for="normal"> normal </label>
+  
+      <input id="fighting" class="typeFilter" type="checkbox" name="type" value="fighting">
+      <label for="fighting"> fighting </label>
+  
+      <input id="flying" class="typeFilter" type="checkbox" name="type" value="flying">
+      <label for="flying"> flying </label>
+  
+      <input id="poison" class="typeFilter" type="checkbox" name="type" value="poison">
+      <label for="poison"> poison </label>
+  
+      <input id="ground" class="typeFilter" type="checkbox" name="type" value="ground">
+      <label for="ground"> ground </label>
+  
+      <input id="rock" class="typeFilter" type="checkbox" name="type" value="rock">
+      <label for="rock"> rock </label>
+  
+      <input id="bug" class="typeFilter" type="checkbox" name="type" value="bug">
+      <label for="bug"> bug </label>
+  
+      <input id="ghost" class="typeFilter" type="checkbox" name="type" value="ghost">
+      <label for="ghost"> ghost </label>
+
+      <input id="steel" class="typeFilter" type="checkbox" name="type" value="steel">
+      <label for="steel"> steel </label>
+  
+      <input id="fire" class="typeFilter" type="checkbox" name="type" value="fire">
+      <label for="fire"> fire </label>
+  
+      <input id="water" class="typeFilter" type="checkbox" name="type" value="water">
+      <label for="water"> water </label>
+  
+      <input id="grass" class="typeFilter" type="checkbox" name="type" value="grass">
+      <label for="grass"> grass </label>
+  
+      <input id="electric" class="typeFilter" type="checkbox" name="type" value="electric">
+      <label for="electric"> electric </label>
+  
+      <input id="psychic" class="typeFilter" type="checkbox" name="type" value="psychic">
+      <label for="psychic"> psychic </label>
+  
+      <input id="ice" class="typeFilter" type="checkbox" name="type" value="ice">
+      <label for="ice"> ice </label>
+  
+      <input id="dragon" class="typeFilter" type="checkbox" name="type" value="dragon">
+      <label for="dragon"> dragon </label>
+  
+      <input id="dark" class="typeFilter" type="checkbox" name="type" value="dark">
+      <label for="dark"> dark </label>
+  
+      <input id="fairy" class="typeFilter" type="checkbox" name="type" value="fairy">
+      <label for="fairy"> fairy </label>
+  
+      <input id="unknown" class="typeFilter" type="checkbox" name="type" value="unknown">
+      <label for="unknown"> unknown </label>
+  
+      <input id="shadow" class="typeFilter" type="checkbox" name="type" value="shadow">
+      <label for="shadow"> shadow </label>
+    </div>
+  
+    <div id="totalHeader"></div>
+    <div id="pokeCards"></div>
+  
+    <div id="pokeModal" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Modal body text goes here.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div id="pagination"></div>
+  </body>
+  
+  </html>
+  
+
+</html>
