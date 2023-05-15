@@ -2,7 +2,6 @@ const PAGE_SIZE = 10;
 let currentPage = 1;
 let pokemons = [];
 let numPages = 0;
-let filteredPokemons = []; // Declare the filteredPokemons array
 
 const filterPokemonsByType = async () => {
   const selectedTypes = $('.typeFilter:checked').map(function () {
@@ -10,25 +9,24 @@ const filterPokemonsByType = async () => {
   }).get();
 
   if (selectedTypes.length === 0) {
-    currentPage = 1; // Reset the current page
-    filteredPokemons = pokemons.slice(); // Reset filteredPokemons to the original pokemons array
-  } else {
-    const responses = await Promise.all(pokemons.map(pokemon => axios.get(pokemon.url)));
-
-    filteredPokemons = pokemons.filter((pokemon, index) => {
-      const types = responses[index].data.types.map(type => type.type.name);
-      return selectedTypes.every(type => types.includes(type));
-    });
-
-    currentPage = 1; // Reset the current page
+    paginate(currentPage, PAGE_SIZE, pokemons);
+    updatePaginationDiv(currentPage, numPages);
+    return;
   }
 
+  const responses = await Promise.all(pokemons.map(pokemon => axios.get(pokemon.url)));
+
+  const filteredPokemons = pokemons.filter((pokemon, index) => {
+    const types = responses[index].data.types.map(type => type.type.name);
+    return selectedTypes.every(type => types.includes(type));
+  });
+
+  currentPage = 1;
+  pokemons = filteredPokemons;
   paginate(currentPage, PAGE_SIZE, filteredPokemons);
   numPages = Math.ceil(filteredPokemons.length / PAGE_SIZE);
   updatePaginationDiv(currentPage, numPages);
 };
-
-
 
 const updatePaginationDiv = (currentPage, numPages) => {
   $('#pagination').empty();
@@ -123,13 +121,27 @@ const setup = async () => {
 
   $('body').on('click', '.numberedButtons', async function (e) {
     currentPage = Number(e.target.value);
-    filterPokemonsByType();
+
+    if ($('.typeFilter:checked').length === 0) {
+      paginate(currentPage, PAGE_SIZE, pokemons);
+      updatePaginationDiv(currentPage, numPages);
+    } else {
+      filterPokemonsByType();
+    }
   });
 
   $('.typeFilter').change(function () {
-    filterPokemonsByType();
+    if ($(this).is(':checked')) {
+      filterPokemonsByType();
+    } else {
+      if ($('.typeFilter:checked').length === 0) {
+        paginate(currentPage, PAGE_SIZE, pokemons);
+        updatePaginationDiv(currentPage, numPages);
+      } else {
+        filterPokemonsByType();
+      }
+    }
   });
 };
 
 $(document).ready(setup);
-
